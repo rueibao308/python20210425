@@ -53,6 +53,21 @@ numbers : 49293 62772 10337 55311 83777 35171 75457 55050 10520 55968 88846 5312
 answer : 97741
 Ans: CTF{yoUaReInth33RdpL4c3}
 
+## 1~100 -
+ user@user-VirtualBox(10.0.2.15)[~] 
+[XD] % gedit cat.py  
+ user@user-VirtualBox(10.0.2.15)[~] 
+[XD] % python3 cat.py
+cat.py-
+from pwn import *
+ip="120.114.62.214"
+port=2403
 
+r = remote(ip, port)
+for i in range(1,101):
+    r.recvuntil("wave")
+    r.recvuntil("?")
+    r.sendline(str(i))
+r.interactive()
 
-
+CTF{gOOD4tMatHYOUarE}
